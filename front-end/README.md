@@ -67,7 +67,7 @@ Runs the application on production mode. you can view app locally on `http://loc
 
 ### **TODO**
 
-- [ ] Design Responsive Toolbar Component for collecting exchange values
+- [x] Design Responsive Toolbar Component for collecting exchange values
 - [ ] Desgin Responsive Table component for displaying historical data
 - [ ] Design Filter Component for table
 - [ ] Add pagination logic to Table component

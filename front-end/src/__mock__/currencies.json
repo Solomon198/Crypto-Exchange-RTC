@@ -1,0 +1,48 @@
+{
+    "cryptoCurrencies":[
+        {
+            "icon": "/images/btc.png",
+            "value": "BTC"
+        },
+        {
+            "icon": "/images/eth.png",
+            "value": "ETH"
+        },
+        {
+            "icon": "/images/xrp.png",
+            "value": "XRP"
+        }
+    ],
+    "fiatCurrencies": [
+        {
+            "icon": "/images/usd.png",
+            "value": "USD"
+        },
+        {
+            "icon": "/images/eur.png",
+            "value": "EUR"
+
+        },
+        {
+            "icon": "/images/gbp.png",
+            "value": "GBP"
+        }
+    ],
+    "dummyRate":{
+        "BTC": {
+          "USD": 1000,
+          "GBP": 2000,
+          "EUR": 1500
+        },
+        "XRP": {
+          "USD": 800,
+          "GBP": 700,
+          "EUR": 600
+        },
+        "ETH": {
+          "USD": 900,
+          "GBP": 800,
+          "EUR": 700
+        }
+      }
+}
