@@ -17,11 +17,3 @@ export const OptionContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-
-export const InputLabel = styled.label`
-  margin: 0;
-  padding: 0;
-  color: gray;
-  font-weight: 500;
-  font-size: 14px;
-`;

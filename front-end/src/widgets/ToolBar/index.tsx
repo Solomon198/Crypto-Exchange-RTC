@@ -71,7 +71,7 @@ export function ToolBarWidget() {
         {({ submitForm, isValid, values, setFieldValue }) => (
           <Form>
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-2 col-sm-12">
                 <Field
                   options={Currencies.cryptoCurrencies}
                   component={Select}
@@ -87,7 +87,7 @@ export function ToolBarWidget() {
                   }}
                 />
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 col-sm-12">
                 <Field
                   type="number"
                   label="Amount"
@@ -103,7 +103,7 @@ export function ToolBarWidget() {
                   }}
                 />
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 col-sm-12">
                 <Field
                   component={Select}
                   name="currencyTo"
@@ -119,7 +119,7 @@ export function ToolBarWidget() {
                   options={Currencies.fiatCurrencies}
                 />
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 col-sm-12">
                 <Field
                   label="Amount"
                   name="amountTo"
@@ -127,7 +127,7 @@ export function ToolBarWidget() {
                   component={Input}
                 />
               </div>
-              <div className="col-md-1 mt-2">
+              <div className="col-md-1 mt-2 col-sm-12">
                 <div style={{ color: "#fff" }}>.</div>
                 <Button
                   disableElevation

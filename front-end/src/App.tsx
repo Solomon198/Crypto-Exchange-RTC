@@ -2,15 +2,16 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { ToolBarWidget } from "./widgets/ToolBar/index";
+import Table from "./widgets/Table/table";
+import { Layout } from "./components/index";
 
 function App() {
   return (
-    <div
-      className="App"
-      style={{ width: "80%", margin: "auto", marginTop: 20 }}
-    >
+    <Layout.Container>
       <ToolBarWidget />
-    </div>
+      <Layout.ContainerSeperator />
+      <Table />
+    </Layout.Container>
   );
 }
 

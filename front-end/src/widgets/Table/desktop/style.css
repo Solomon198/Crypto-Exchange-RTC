@@ -1,0 +1,22 @@
+th, table,td {
+    border: none !important;
+    border-width: 0px;
+    box-shadow: none;
+}
+
+th {
+    font-weight: 500;
+}
+
+tbody tr:nth-of-type(odd){
+    background-color:white;
+}
+
+tbody tr:nth-of-type(even){
+    background-color:rgba(0,0,0,.05)
+}
+
+thead {
+    background-color: rgba(0,0,0,.05);
+}
+

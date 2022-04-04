@@ -68,11 +68,11 @@ Runs the application on production mode. you can view app locally on `http://loc
 ### **TODO**
 
 - [x] Design Responsive Toolbar Component for collecting exchange values
-- [ ] Desgin Responsive Table component for displaying historical data
-- [ ] Design Filter Component for table
+- [x] Desgin Responsive Table component for displaying historical data
+- [x] Design Filter Component for table
+- [x] Create Widget with designed components
+- [x] Add Sorting capability
+- [ ] Connect UI to business logic (Stream data from backend using web sockets)
 - [ ] Add pagination logic to Table component
 - [ ] Test Components
-- [ ] Create Widget with designed components
-- [ ] Connect UI to business logic (Stream data from backend using web sockets)
-- [ ] Add Sorting capability
 - [ ] Create video of working application

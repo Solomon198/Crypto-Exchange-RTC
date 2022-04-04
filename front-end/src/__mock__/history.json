@@ -1,0 +1,40 @@
+{
+    "history":[
+        {
+            "date": "22/10/1994 14:00",
+            "currencyFrom": "Bitcoin",
+            "currencyFromShortName": "BTC",
+            "amountFrom": 1,
+            "currencyTo": "USD",
+            "amountTo": "48 000.00",
+            "type": "Live Price"
+        },
+        {
+            "date": "22/1/1994 14:00",
+            "currencyFrom": "Bitcoin",
+            "currencyFromShortName": "BTC",
+            "amountFrom": 2,
+            "currencyTo": "EUR",
+            "amountTo": "248 000.00",
+            "type": "Exchanged"
+        },
+        {
+            "date": "22/10/1994 14:00",
+            "currencyFrom": "Bitcoin",
+            "currencyFromShortName": "BTC",
+            "amountFrom": 3,
+            "currencyTo": "GBP",
+            "amountTo": "1 448 000.00",
+            "type": "Exchanged"
+        },
+        {
+            "date": "22/10/1994 14:00",
+            "currencyFrom": "Ripple",
+            "currencyFromShortName": "XRP",
+            "amountFrom": 4,
+            "currencyTo": "EUR",
+            "amountTo": "8 000.00",
+            "type": "Live Price"
+        }
+    ]
+}

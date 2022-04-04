@@ -1,8 +1,6 @@
-import { InputLabel } from "./styled.components";
+import { InputLabel } from "../general.styles/containers";
 import { FormikErrors, FormikTouched } from "formik";
 import FormControl from "@mui/material/FormControl";
-import * as React from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 interface CustomProps {

@@ -2,7 +2,8 @@ import { FormikErrors, FormikTouched } from "formik";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { SelectIMG, OptionContainer, InputLabel } from "./styled.components";
+import { InputLabel } from "../general.styles/containers";
+import { SelectIMG, OptionContainer } from "./styled.components";
 
 interface SelectOptions {
   icon?: string;
