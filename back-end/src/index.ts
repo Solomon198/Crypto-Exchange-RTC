@@ -1,45 +1,35 @@
-import * as bodyParser from 'body-parser';
 import express from 'express';
-import morgan from 'morgan';
+import * as SocketIO from 'socket.io';
 // @ts-ignore
-import helmet from 'helmet';
-import cors from 'cors';
-import ErrorHandler from './Middlewares/error.handler';
-import Logger, { HttpLogger } from './Logger/index';
+import { createServer } from 'http';
+import Logger from './Logger/index';
+import { IntializeApplication } from './utills/helpers';
+import RunCronJob from './handlers/schedular';
 
 require('dotenv/config');
 require('./utills/connection');
 
-// Application-Level Middleware
 const app = express();
+const HttpServer = createServer(app);
+const IO = new SocketIO.Server(HttpServer);
 
+const onConnection = (socket: SocketIO.Socket) => {
+  console.log(socket);
+};
+
+IO.on('connection', onConnection);
+
+// By default setup application to use MOCK API. To get live data from coinLayer pass in accessToken and the MOCK SERVER Will be disabled
+IntializeApplication();
+
+// Starts runing the cron job to save exchange rates to database and stream to users every configured minutes
+
+console.log('runing cron job');
+RunCronJob(IO);
+
+// catches uncaught process error
 process.on('uncaughtException', (err) => {
   Logger.error(err.message);
 });
 
-app.use(helmet());
-app.use(cors({ origin: '*' }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  morgan('combined', {
-    skip: (
-      req, // eslint-disable-line
-      res,
-    ) => res.statusCode < 400,
-    stream: {
-      write: (msg: string) => {
-        if (app.get('env') === 'production') {
-          HttpLogger.http(msg);
-        }
-      },
-    },
-  }),
-);
-// api doc directory
-app.use('/', express.static('api-doc'));
-
-// Handles error
-app.use(ErrorHandler);
-
-export default app;
+export default HttpServer;

@@ -1,6 +1,6 @@
 import config from 'config';
-import app from './index';
+import IO from './index';
 
 const PORT = config.get('PORT');
 
-app.listen(PORT, () => console.log(`API listening on port ${PORT}!`));
+IO.listen(PORT, () => console.log(`API listening on port ${PORT}!`));

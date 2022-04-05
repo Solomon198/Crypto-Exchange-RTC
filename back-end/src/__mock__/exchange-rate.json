@@ -1,0 +1,41 @@
+{
+    "exchange-rates":[
+        {
+            "success": true,
+            "terms": "https://coinlayer.com/terms",
+            "privacy": "https://coinlayer.com/privacy",
+            "timestamp": 1649054286,
+            "target": "USD",
+            "rates": {
+                "BTC": 46355.441034,
+                "ETH": 3516.330385,
+                "XRP": 0.84013
+            }
+        },
+        {
+            "success": true,
+            "terms": "https://coinlayer.com/terms",
+            "privacy": "https://coinlayer.com/privacy",
+            "timestamp": 1649055186,
+            "target": "GBP",
+            "rates": {
+                "BTC": 35301.795402,
+                "ETH": 2676.370211,
+                "XRP": 0.640314
+            }
+        },
+        {
+            "success": true,
+            "terms": "https://coinlayer.com/terms",
+            "privacy": "https://coinlayer.com/privacy",
+            "timestamp": 1649055246,
+            "target": "EUR",
+            "rates": {
+                "BTC": 41971.089829,
+                "ETH": 3181.987697,
+                "XRP": 0.761298
+            }
+        }
+    ]
+
+}
