@@ -76,6 +76,7 @@ yarn prettier-watch
 
 ### **TODOS**
 
-- [ ] Write Schema for historical data
-- [ ] Set up cron-job and third party API integration
-- [ ] Implement Websocket logic and interaction with client.
+- [x] Write Schema for historical data
+- [x] Set up cron-job and third party API integration
+- [x] Implement Websocket logic and interaction with client.
+- [ ] Add pagination logic and filtering of records by date range
