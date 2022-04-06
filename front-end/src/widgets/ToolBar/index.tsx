@@ -1,14 +1,16 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Currencies from "../../__mock__/currencies.json";
+import Coins from "../../__mock__/coins.json";
 import { Input, Select, Typography } from "../../components/index";
 import Button from "@mui/material/Button";
 import { convertNumberToIntl } from "../../utilities/helper.functions";
 import { useState } from "react";
+import { Rates } from "../../types/entities";
 
 // Schema validation
 const validationSchema = Yup.object().shape({
-  currencyFrom: Yup.string().required(),
+  currencyFromShortName: Yup.string().required(),
   currencyTo: Yup.string().required(),
   amountFrom: Yup.number().required(),
   amountTo: Yup.string().required(),
@@ -18,16 +20,28 @@ const validationSchema = Yup.object().shape({
 /**
  * @description ToolBar Widget for saving exchange rate in real time
  */
-export function ToolBarWidget() {
+
+interface Props {
+  rates: Rates[];
+  onExchange: (exchangeParams: {
+    currencyFromShortName: string;
+    currencyFrom: string;
+    currencyTo: string;
+    amountFrom: number;
+    amountTo: string;
+    rate: number;
+    type: "Exchanged" | "Live Price";
+  }) => void;
+}
+export function ToolBarWidget(props: Props) {
+  const { rates, onExchange } = props;
   const [initialState, setInitialState] = useState({
-    currencyFrom: "",
+    currencyFromShortName: "",
     currencyTo: "",
     amountFrom: 0,
     amountTo: "",
     rate: 0,
   });
-
-  const dummyRate = Currencies.dummyRate;
 
   /**
    * @description Calculates the exchange rate from any crypto to fiat currency as soon as any of the input changes and are valid.
@@ -36,17 +50,18 @@ export function ToolBarWidget() {
    * @param amountFrom amount of crypto to be converted to fiat.
    */
   const handleCalculateExchange = (
-    currencyFrom: string,
+    currencyFromShortName: string,
     currencyTo: string,
     amountFrom: number
   ) => {
-    if (currencyFrom && amountFrom && currencyTo) {
+    if (currencyFromShortName && amountFrom && currencyTo) {
+      const getRate = rates.find((rate) => rate.target === currencyTo) as Rates;
       // @ts-ignore
-      const rate = dummyRate[currencyFrom][currencyTo];
+      const rate = getRate.rates[currencyFromShortName];
       let exchange = convertNumberToIntl(currencyTo, amountFrom * rate);
       setInitialState({
         ...initialState,
-        currencyFrom,
+        currencyFromShortName,
         currencyTo,
         amountFrom,
         amountTo: exchange,
@@ -64,8 +79,22 @@ export function ToolBarWidget() {
         enableReinitialize
         validationSchema={validationSchema}
         onSubmit={(values) => {
+          // @ts-ignore
+          const currencyFromFullName = Coins[values.currencyFromShortName].name;
           // same shape as initial values
-          console.log(values);
+          onExchange({
+            ...values,
+            type: "Exchanged",
+            currencyFrom: currencyFromFullName,
+          });
+
+          setInitialState({
+            currencyFromShortName: "",
+            currencyTo: "",
+            amountFrom: 0,
+            amountTo: "",
+            rate: 0,
+          });
         }}
       >
         {({ submitForm, isValid, values, setFieldValue }) => (
@@ -73,12 +102,16 @@ export function ToolBarWidget() {
             <div className="row">
               <div className="col-md-2 col-sm-12">
                 <Field
-                  options={Currencies.cryptoCurrencies}
+                  options={Object.keys(Coins).map((key) => {
+                    // @ts-ignore
+                    const { icon_url, symbol } = Coins[key];
+                    return { icon: icon_url, value: symbol };
+                  })}
                   component={Select}
                   label="Currency from"
-                  name="currencyFrom"
+                  name="currencyFromShortName"
                   onChange={(e: any) => {
-                    setFieldValue("currencyFrom", e.target.value);
+                    setFieldValue("currencyFromShortName", e.target.value);
                     handleCalculateExchange(
                       e.target.value,
                       values.currencyTo,
@@ -96,7 +129,7 @@ export function ToolBarWidget() {
                   onChange={(e: any) => {
                     setFieldValue("amountFrom", e.target.value);
                     handleCalculateExchange(
-                      values.currencyFrom,
+                      values.currencyFromShortName,
                       values.currencyTo,
                       e.target.value
                     );
@@ -111,7 +144,7 @@ export function ToolBarWidget() {
                   onChange={(e: any) => {
                     setFieldValue("currencyTo", e.target.value);
                     handleCalculateExchange(
-                      values.currencyFrom,
+                      values.currencyFromShortName,
                       e.target.value,
                       values.amountFrom
                     );

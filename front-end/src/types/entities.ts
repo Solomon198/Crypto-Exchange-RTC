@@ -1,5 +1,6 @@
 export interface History {
-  date: string;
+  _id?: string;
+  date?: string;
   currencyFrom: string;
   currencyFromShortName: string;
   amountFrom: number;
@@ -11,4 +12,13 @@ export interface History {
 export interface Currency {
   value: string;
   icon: string;
+}
+
+export interface Rates {
+  target: string;
+  rates: {
+    BTC: string;
+    XRP: string;
+    ETH: string;
+  };
 }

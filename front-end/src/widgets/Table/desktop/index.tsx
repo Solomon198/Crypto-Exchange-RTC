@@ -17,7 +17,7 @@ export default function HistoryTableDesktop(props: Props) {
       headerSortingClasses: "sortable-active",
     },
     {
-      dataField: "currencyFrom",
+      dataField: "currencyFromShortName",
       text: "Currency From",
       sort: true,
     },
@@ -51,7 +51,7 @@ export default function HistoryTableDesktop(props: Props) {
       sx={{ display: { md: "block", xs: "none", sm: "none" } }}
     >
       <BootstrapTable
-        keyField="amountFrom"
+        keyField="_id"
         data={props.data}
         columns={columns}
         bootstrap4

@@ -1,0 +1,24 @@
+{
+        "BTC": {
+            "symbol": "BTC",
+            "name": "Bitcoin",
+            "name_full": "Bitcoin (BTC)",
+            "max_supply": 21000000,
+            "icon_url": "https://assets.coinlayer.com/icons/BTC.png"
+        },
+        "ETH": {
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "name_full": "Ethereum (ETH)",
+            "max_supply": 0,
+            "icon_url": "https://assets.coinlayer.com/icons/ETH.png"
+        },
+        "XRP": {
+            "symbol": "XRP",
+            "name": "Ripple",
+            "name_full": "Ripple (XRP)",
+            "max_supply": 38305873865,
+            "icon_url": "https://assets.coinlayer.com/icons/XRP.png"
+        }
+    
+}

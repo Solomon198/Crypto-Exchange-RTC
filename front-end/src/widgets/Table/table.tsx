@@ -2,10 +2,13 @@ import HistoryTableDesktop from "../Table/desktop/index";
 import HistoryTableMobile from "../Table/mobile/index";
 import { Typography } from "../../components/index";
 import { DateFilter } from "./filters/date.filter";
-import History from "../../__mock__/history.json";
+import { History } from "../../types/entities";
 
-export default function TableWidget() {
-  const history = History.history;
+interface Props {
+  history: History[];
+}
+export default function TableWidget(props: Props) {
+  const history = props.history;
   return (
     <>
       <Typography.H6>History</Typography.H6>

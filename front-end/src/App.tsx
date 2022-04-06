@@ -4,13 +4,19 @@ import "./App.css";
 import { ToolBarWidget } from "./widgets/ToolBar/index";
 import Table from "./widgets/Table/table";
 import { Layout } from "./components/index";
+import { useAppServiceProvider } from "./custom.hooks/socket.hook";
 
 function App() {
+  const [Rates, History, saveHistory] = useAppServiceProvider();
+
   return (
     <Layout.Container>
-      <ToolBarWidget />
+      <ToolBarWidget
+        rates={Rates}
+        onExchange={(params) => saveHistory(params)}
+      />
       <Layout.ContainerSeperator />
-      <Table />
+      <Table history={History} />
     </Layout.Container>
   );
 }

@@ -19,10 +19,17 @@ export default function HistoryTableMobile(props: Props) {
     >
       {props.data.map(
         (
-          { currencyFrom, currencyTo, amountFrom, currencyFromShortName, type },
+          {
+            currencyFrom,
+            currencyTo,
+            amountFrom,
+            currencyFromShortName,
+            type,
+            _id,
+          },
           index
         ) => (
-          <MobileCard key={index.toString()}>
+          <MobileCard key={_id}>
             <div className="flex-fill">
               <CardHeader
                 style={{ fontWeight: 500, fontSize: 14 }}
