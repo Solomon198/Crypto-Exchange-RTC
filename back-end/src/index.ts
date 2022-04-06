@@ -5,6 +5,8 @@ import { createServer } from 'http';
 import Logger from './Logger/index';
 import { IntializeApplication } from './utills/helpers';
 import RunCronJob from './handlers/schedular';
+import HistoryHandler from './handlers/history.handler';
+import RateHandler from './handlers/rates.handler';
 
 require('dotenv/config');
 require('./utills/connection');
@@ -14,7 +16,9 @@ const HttpServer = createServer(app);
 const IO = new SocketIO.Server(HttpServer);
 
 const onConnection = (socket: SocketIO.Socket) => {
-  console.log(socket);
+  // handle single client requests;
+  HistoryHandler(socket);
+  RateHandler(socket);
 };
 
 IO.on('connection', onConnection);
@@ -24,7 +28,6 @@ IntializeApplication();
 
 // Starts runing the cron job to save exchange rates to database and stream to users every configured minutes
 
-console.log('runing cron job');
 RunCronJob(IO);
 
 // catches uncaught process error

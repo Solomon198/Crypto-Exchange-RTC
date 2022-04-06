@@ -10,13 +10,15 @@ import {
 
 // CronJob runs and gets rates, updates the history and rate collection
 export default function StartRuningCronJob(IO: SocketIO.Server) {
-  IO.emit('HI');
   const { FETCH_EXCHANGE_RATE_INTERVAL } = Constants.Timers;
   console.log(FETCH_EXCHANGE_RATE_INTERVAL, 'THis is interval');
   const task = new CronJob('10 * * * * *', async () => {
-    console.log('Inserted New Data');
     // gets rates from coinLayer for USD,EUR,GBP
     // console.log('working', '=================================');
+
+    console.log(
+      '--------------------RATE STREAMED ----------------------- ',
+    );
     const responses = await getRates();
 
     // Prepare new rates data to insert into history collection at this time
@@ -34,20 +36,16 @@ export default function StartRuningCronJob(IO: SocketIO.Server) {
     await Models.History.bulkWrite(bulkQueries);
     await Models.Rates.bulkWrite($bulkQueries);
 
+    // reading data inserted into data base
     const savedRates = await Models.Rates.find({});
     const History = await Models.History.find({})
       .sort({ _id: -1 })
       .limit(10);
 
-    // Stream information to frontend
+    // Stream information to frontend, this is a public broadcast since every user needs to get latest history and rates;
     IO.emit('live:rate', savedRates);
     IO.emit('live:history', History);
   });
 
   task.start();
 }
-
-// 1)  ME DIXRIE DESIGNER
-// 2)  PRESSING COMPUTER (AKA YAHOO BOY)
-// 3)  HMMMM
-// 4)
