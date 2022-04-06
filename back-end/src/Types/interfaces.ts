@@ -8,6 +8,7 @@ export interface History extends Document {
   currencyTo: string;
   amountTo: string;
   type: 'Live Price' | 'Exchanged';
+  rate: number;
 }
 
 export interface Rates extends Document {

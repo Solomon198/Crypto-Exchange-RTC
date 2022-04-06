@@ -21,7 +21,7 @@ const IO = new SocketIO.Server(HttpServer, {
 
 const onConnection = (socket: SocketIO.Socket) => {
   // handle single client requests;
-  HistoryHandler(socket);
+  HistoryHandler(socket, IO);
   RateHandler(socket);
 };
 

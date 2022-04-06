@@ -2,6 +2,8 @@ import { Schema, model } from 'mongoose';
 import { History as HistoryProps } from '../Types/interfaces';
 
 const History = new Schema({
+  _id: { type: Schema.Types.ObjectId },
+  rate: { type: Schema.Types.Number },
   date: { type: Schema.Types.Date, default: new Date() },
   currencyFrom: { type: Schema.Types.String, required: true },
   currencyFromShortName: {

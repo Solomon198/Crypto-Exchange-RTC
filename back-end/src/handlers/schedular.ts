@@ -47,6 +47,7 @@ export default function StartRuningCronJob(IO: SocketIO.Server) {
         .limit(10);
 
       // Stream information to frontend, this is a public broadcast since every user needs to get latest history and rates;
+
       IO.emit('live:rate', savedRates);
       IO.emit('live:history', History);
     },
