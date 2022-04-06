@@ -79,10 +79,8 @@ export function PrepareRateBulkInsertDataOrUpdate(
           }
         : {
             [queryType]: {
-              document: {
-                filter: { target: data.target },
-                update: { rates: data.rates },
-              },
+              filter: { target: data.target },
+              update: { rates: data.rates },
             },
           };
     bulkQueries.push(query);
