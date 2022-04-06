@@ -13,7 +13,11 @@ require('./utills/connection');
 
 const app = express();
 const HttpServer = createServer(app);
-const IO = new SocketIO.Server(HttpServer);
+const IO = new SocketIO.Server(HttpServer, {
+  cors: {
+    origin: '*',
+  },
+});
 
 const onConnection = (socket: SocketIO.Socket) => {
   // handle single client requests;
