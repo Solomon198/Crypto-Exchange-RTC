@@ -76,7 +76,9 @@ yarn prettier-watch
 
 ### **TODOS**
 
-- [x] Write Schema for historical data
-- [x] Set up cron-job and third party API integration
-- [x] Implement Websocket logic and interaction with client.
+- [x] Write Schema for historical data and Rates
+- [x] Write Mock Server (COIN LAYER) and Configure application for live interaction with COIN LAYER
+- [x] Set up cron-job
+- [x] Implement Websocket (SOCKET.IO) logic and interaction with client.
 - [ ] Add pagination logic and filtering of records by date range
+- [ ] Update Documentation
