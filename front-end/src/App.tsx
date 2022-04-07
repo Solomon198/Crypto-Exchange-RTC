@@ -25,12 +25,17 @@ function App() {
 
   return (
     <Layout.Container>
+      {/* COMPONENT FOR EXCHANGING CRYPTO AND FIAT */}
       <ToolBarWidget
         rates={Rates}
         onExchange={(params) => saveHistory(params)}
       />
       <Layout.ContainerSeperator />
+
+      {/* DISPLAY TABLE FOR DATA BASE ON MOBILE OR DESKTOP VIEW */}
       <Table onFilter={(payload) => getHistory(payload)} history={History} />
+
+      {/* SNACKBAR */}
       <Snackbar
         anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
         open={showSnackBar.show}

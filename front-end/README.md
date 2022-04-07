@@ -75,5 +75,5 @@ Runs the application on production mode. you can view app locally on `http://loc
 - [x] Connect UI to business logic (Stream data from backend using web sockets)
 - [x] Add Filter document by range functionality
 - [ ] Add component testing
-- [ ] Update documentation and comments
+- [x] Update documentation and comments
 - [ ] Create video of working application

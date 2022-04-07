@@ -30,6 +30,7 @@ export default function HistoryTableMobile(props: Props) {
       elevation={0}
       sx={{ display: { md: "none", xs: "block", sm: "block", marginTop: 20 } }}
     >
+      {/* MODAL FOR SHOWING ALL INFORMATION ABOUT EXCHANGE RATE ON MOBILE */}
       <Modal open={showModal} handleClose={() => setShowModal(false)}>
         <ModalContainer>
           <ModalHeader>
@@ -84,6 +85,8 @@ export default function HistoryTableMobile(props: Props) {
           </Button>
         </ModalContainer>
       </Modal>
+
+      {/* LIST OF EXCHANGE-RATE HISTORY */}
       {props.data.map(
         (
           {
