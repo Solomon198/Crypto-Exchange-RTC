@@ -10,6 +10,7 @@ import {
 
 // CronJob runs and gets rates, updates the history and rate collection
 export default function StartRuningCronJob(IO: SocketIO.Server) {
+  // gets the minutes required for runing cron job at intervals
   const FETCH_EXCHANGE_RATE_INTERVAL = config.get(
     'FETCH_EXCHANGE_RATE_INTERVAL',
   );
@@ -17,12 +18,9 @@ export default function StartRuningCronJob(IO: SocketIO.Server) {
     cronTime: `0 */${FETCH_EXCHANGE_RATE_INTERVAL} * * * *`,
     onTick: async () => {
       // gets rates from coinLayer for USD,EUR,GBP
-      // console.log('working', '=================================');
-
       console.log(
         '-------------------- RUNING SCHEDULAR TO FETCH RATES AND UPDATE DATABASE AND USERS ----------------------- ',
       );
-      console.log(new Date());
       const responses = await getRates();
 
       // Prepare new rates data to insert into history collection at this time

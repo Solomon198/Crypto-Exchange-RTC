@@ -1,5 +1,7 @@
 import winston, { format } from 'winston';
 
+// SETTING UP LOGGER FOR LOGGING ERRORS IN PRODUCTION
+
 const { combine, printf } = format;
 const logFormat = printf(
   ({ level, message, label, timestamp }) =>

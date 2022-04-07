@@ -23,8 +23,8 @@ export function convertNumberToIntl(
 }
 
 /**
- *
- * @returns
+ * @description prepare exchange-rates gotten from API(coin-layer) for insertion into history collection
+ * @returns constructed queries ready for bulkWrite
  */
 export function PrepareHistoryBulkInsertData(
   responses: CoinLayerResponsePayload[],
@@ -58,7 +58,7 @@ export function PrepareHistoryBulkInsertData(
 
 /**
  * @description format data to be inserted into database and determinse if is an update or insert
- * @returns
+ * @returns constructed queries ready for mongodb bulkwrite
  */
 export function PrepareRateBulkInsertDataOrUpdate(
   responses: CoinLayerResponsePayload[],
@@ -89,8 +89,8 @@ export function PrepareRateBulkInsertDataOrUpdate(
 }
 
 /**
- * @description returns crypto exchange rate from coinLayerAPI base on target USD,EUR, or GBP and symbols
- * @returns
+ * @description gets crypto exchange rate from coinLayerAPI base on target USD,EUR, or GBP and symbols
+ * @returns exchange rates
  */
 export async function getRates() {
   // fetch rates

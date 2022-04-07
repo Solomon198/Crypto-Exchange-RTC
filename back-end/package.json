@@ -79,17 +79,14 @@
     "create-hmac": "^1.1.7",
     "cron": "^1.8.2",
     "debug": "^4.3.2",
-    "diff": "^5.0.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "google-libphonenumber": "^3.2.16",
     "helmet": "^3.21.0",
     "joi": "^17.4.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mongodb": "^3.6.3",
     "mongoose": "^5.7.0",
-    "mongoose-paginate-v2": "^1.4.2",
     "request": "^2.88.2",
     "socket.io": "^4.4.1",
     "ts-node": "^10.2.1",
@@ -99,12 +96,5 @@
   },
   "lint-staged": {
     "*.ts": []
-  },
-  "apidoc": {
-    "name": "ExChange Currency Service",
-    "version": "1.0.0",
-    "title": " Red Acre | Exchange Currency Service",
-    "url": "localhost:8081",
-    "sampleUrl": "http://sample.com"
   }
 }

@@ -18,9 +18,9 @@ To run Back-end in developement run:
  yarn start:dev
 ```
 
-Runs the appliation on developement mode on port `http://localhost:8000`. The app is configured to connect to a live mongodb atlas, no need to run local monogodb.
+Runs the appliation on developement mode on port `http://localhost:8000`. **NOTE** The app is configured to connect to a live mongodb atlas, no need to run local monogodb.
 
-## **Runing API on prodcution mode**
+## **Runing API on production mode**
 
 To application on production, you need to build typescript files to their corresponding javascript files.
 
@@ -82,4 +82,4 @@ yarn prettier-watch
 - [x] Implement Websocket (SOCKET.IO) logic and interaction with client.
 - [x] Add filtering of records by date range
 - [ ] Add unit Test
-- [ ] Update Documentation and comments
+- [x] Update Documentation and comments

@@ -1,3 +1,5 @@
+// CONFIGURING DEFAULT CONNECTION TO MONGODB
+
 import config from 'config';
 import { connect, connection } from 'mongoose';
 

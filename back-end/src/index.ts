@@ -14,24 +14,24 @@ require('./utills/connection');
 const app = express();
 const HttpServer = createServer(app);
 const IO = new SocketIO.Server(HttpServer, {
+  // Allow CORS from any origin
   cors: {
     origin: '*',
   },
 });
 
 const onConnection = (socket: SocketIO.Socket) => {
-  // handle single client requests;
+  // client requests handlers;
   HistoryHandler(socket, IO);
   RateHandler(socket);
 };
 
 IO.on('connection', onConnection);
 
-// By default setup application to use MOCK API. To get live data from coinLayer pass in accessToken and the MOCK SERVER Will be disabled
+// By default setup application to use MOCK API. To get live data from coinLayer pass in accessToken and the MOCK SERVER Will be disabled and the live connection to coin layer will be used for all rates requests
 IntializeApplication();
 
-// Starts runing the cron job to save exchange rates to database and stream to users every configured minutes
-
+// Starts runing the cron job to get rates and save exchange rates to database and stream to users every configured minutes
 RunCronJob(IO);
 
 // catches uncaught process error
