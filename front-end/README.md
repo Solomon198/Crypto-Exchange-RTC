@@ -72,7 +72,7 @@ Runs the application on production mode. you can view app locally on `http://loc
 - [x] Design Filter Component for table
 - [x] Create Widget with designed components
 - [x] Add Sorting capability
-- [ ] Connect UI to business logic (Stream data from backend using web sockets)
-- [ ] Add pagination logic to Table component
+- [x] Connect UI to business logic (Stream data from backend using web sockets)
+- [ ] Add Filter
 - [ ] Test Components
 - [ ] Create video of working application
