@@ -3,12 +3,33 @@ import { Types } from 'mongoose';
 import Models from '../models/index';
 import { History as HistoryProps } from '../Types/interfaces';
 
+type getQuery = {
+  from: Date;
+  to: Date;
+  type: 'All' | 'Live Price' | 'Exchanged';
+};
 export default function History(
   socket: SocketIO.Socket,
   IO: SocketIO.Server,
 ) {
-  const getHistory = async () => {
-    const history = await Models.History.find({})
+  const getHistory = async (payload?: getQuery) => {
+    let query = {};
+    // checking if user passed filter option
+    if (payload) {
+      // composing mongodb query
+      if (payload.type !== 'All') {
+        query = { ...query, type: payload.type };
+      }
+      const { from, to } = payload;
+      query = {
+        ...query,
+        date: {
+          $gte: new Date(from),
+          $lt: new Date(to),
+        },
+      };
+    }
+    const history = await Models.History.find(query)
       .sort({ _id: -1 })
       .limit(10);
     socket.emit('live:history', history);

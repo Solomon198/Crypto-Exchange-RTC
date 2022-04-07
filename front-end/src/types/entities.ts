@@ -22,3 +22,9 @@ export interface Rates {
     ETH: string;
   };
 }
+
+export interface Filter {
+  from: Date;
+  to: Date;
+  type: "All" | "Live Price" | "Exchanged";
+}

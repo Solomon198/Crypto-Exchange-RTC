@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Rates, History } from "../types/entities";
+import { Rates, History, Filter } from "../types/entities";
 
 type status = "success" | "error";
 type savedHistoryNotifier = (status: status) => void;
@@ -10,7 +10,7 @@ const Connection = io("ws://localhost:8081");
 
 export function useAppServiceProvider(
   notifier: savedHistoryNotifier
-): [Rates[], History[], (param: History) => void];
+): [Rates[], History[], (param: History) => void, (payload: Filter) => void];
 export function useAppServiceProvider(notifier: savedHistoryNotifier) {
   const [rates, setRate] = useState([] as Rates[]);
   const [history, setHistory] = useState([] as History[]);
@@ -19,6 +19,9 @@ export function useAppServiceProvider(notifier: savedHistoryNotifier) {
     Connection.volatile.emit("save:history", payload);
   };
 
+  const getHistory = (filter: Filter) => {
+    Connection.volatile.emit("get:history", filter);
+  };
   const savedNotification = (status: status) => {
     notifier(status);
   };
@@ -50,5 +53,5 @@ export function useAppServiceProvider(notifier: savedHistoryNotifier) {
     };
   }, []);
 
-  return [rates, history, saveHistory];
+  return [rates, history, saveHistory, getHistory];
 }

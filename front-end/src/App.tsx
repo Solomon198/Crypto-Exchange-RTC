@@ -19,7 +19,9 @@ function App() {
   const $showSnackBar = (status: status) => {
     setShowNackBar({ status, show: true });
   };
-  const [Rates, History, saveHistory] = useAppServiceProvider($showSnackBar);
+
+  const [Rates, History, saveHistory, getHistory] =
+    useAppServiceProvider($showSnackBar);
 
   return (
     <Layout.Container>
@@ -28,7 +30,7 @@ function App() {
         onExchange={(params) => saveHistory(params)}
       />
       <Layout.ContainerSeperator />
-      <Table history={History} />
+      <Table onFilter={(payload) => getHistory(payload)} history={History} />
       <Snackbar
         anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
         open={showSnackBar.show}
