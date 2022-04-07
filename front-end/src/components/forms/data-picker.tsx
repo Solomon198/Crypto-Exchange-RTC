@@ -10,6 +10,8 @@ interface DatePickerProps {
   onChange: (date: Date | null) => void;
   disabled?: boolean | undefined;
   label: string;
+  maxDate?: Date;
+  minDate?: Date;
 }
 
 /**

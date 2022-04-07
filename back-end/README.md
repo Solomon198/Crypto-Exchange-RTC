@@ -81,5 +81,4 @@ yarn prettier-watch
 - [x] Set up cron-job
 - [x] Implement Websocket (SOCKET.IO) logic and interaction with client.
 - [x] Add filtering of records by date range
-- [ ] Add unit Test
 - [x] Update Documentation and comments

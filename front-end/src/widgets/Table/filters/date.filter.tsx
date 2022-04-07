@@ -45,7 +45,7 @@ export function DateFilter(props: Props) {
             <div className=" m-1">
               <DatePicker
                 label="From Date"
-                value={values.from}
+                value={values.from as any}
                 onChange={(date: any) =>
                   setInitialState({ ...initialState, from: date })
                 }
@@ -56,7 +56,9 @@ export function DateFilter(props: Props) {
                 onChange={(date: any) =>
                   setInitialState({ ...initialState, to: date })
                 }
+                disabled={values.from ? false : true}
                 value={values.to}
+                minDate={values.from as any}
                 label="To Date"
               />
             </div>

@@ -17,9 +17,9 @@ export interface Currency {
 export interface Rates {
   target: string;
   rates: {
-    BTC: string;
-    XRP: string;
-    ETH: string;
+    BTC: number;
+    XRP: number;
+    ETH: number;
   };
 }
 

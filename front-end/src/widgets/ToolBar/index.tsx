@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import Currencies from "../../__mock__/currencies.json";
 import Coins from "../../__mock__/coins.json";
 import { Input, Select, Typography } from "../../components/index";
+import FiatImages from "../../assets/index";
 import Button from "@mui/material/Button";
 import { convertNumberToIntl } from "../../utilities/helper.functions";
 import { useState } from "react";
@@ -149,7 +150,11 @@ export function ToolBarWidget(props: Props) {
                       values.amountFrom
                     );
                   }}
-                  options={Currencies.fiatCurrencies}
+                  options={Currencies.fiatCurrencies.map((fiat) => {
+                    // @ts-ignore
+                    fiat.icon = FiatImages[fiat.value];
+                    return fiat;
+                  })}
                 />
               </div>
               <div className="col-md-2 col-sm-12">

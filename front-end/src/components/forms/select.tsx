@@ -59,8 +59,8 @@ export function CustomSelect(props: CustomProps) {
         {...handleOnchage()}
       >
         {options.map((value) => (
-          <MenuItem key={value.value} value={value.value}>
-            <OptionContainer>
+          <MenuItem role="" key={value.value} value={value.value}>
+            <OptionContainer role="option">
               {value.icon && <SelectIMG alt="" src={value.icon} />}
               {value.value}
             </OptionContainer>
