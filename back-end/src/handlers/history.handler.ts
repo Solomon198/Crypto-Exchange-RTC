@@ -26,6 +26,7 @@ export default function History(
     // eslint-disable-next-line no-underscore-dangle
     newHistory._id = new Types.ObjectId();
     await newHistory.save();
+    socket.emit('saved:history', 'success');
     EmitRecentHistory();
   };
 
