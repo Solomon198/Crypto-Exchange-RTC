@@ -3,19 +3,24 @@ import moment from "moment";
 import { useEffect, useState } from "react";
 import { Rates, History } from "../types/entities";
 
-export function useAppServiceProvider(): [
-  Rates[],
-  History[],
-  (param: History) => void
-];
-export function useAppServiceProvider() {
+type status = "success" | "error";
+type savedHistoryNotifier = (status: status) => void;
+
+const Connection = io("ws://localhost:8081");
+
+export function useAppServiceProvider(
+  notifier: savedHistoryNotifier
+): [Rates[], History[], (param: History) => void];
+export function useAppServiceProvider(notifier: savedHistoryNotifier) {
   const [rates, setRate] = useState([] as Rates[]);
   const [history, setHistory] = useState([] as History[]);
 
-  const Connection = io("ws://localhost:8081");
-
   const saveHistory = (payload: History) => {
     Connection.volatile.emit("save:history", payload);
+  };
+
+  const savedNotification = (status: status) => {
+    notifier(status);
   };
 
   useEffect(() => {
@@ -27,6 +32,8 @@ export function useAppServiceProvider() {
       Connection.on("live:rate", (payload: Rates[]) => {
         setRate(payload);
       });
+
+      Connection.on("saved:history", savedNotification);
 
       Connection.on("live:history", (payload: History[]) => {
         const formatData = payload.map((history) => ({
