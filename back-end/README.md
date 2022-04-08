@@ -18,7 +18,7 @@ To run Back-end in developement run:
  yarn start:dev
 ```
 
-Runs the appliation on developement mode on port `http://localhost:8000`. **NOTE** The app is configured to connect to a live mongodb atlas, no need to run local monogodb.
+Runs the appliation on developement mode on port `http://localhost:8081`. **NOTE** The app is configured to connect to a live mongodb atlas, no need to run local monogodb.
 
 ## **Runing API on production mode**
 
