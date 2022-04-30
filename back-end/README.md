@@ -2,6 +2,8 @@
 
 Exchange Currency Service for getting updated USD to crypto exchange and streaming to front-end using websocket.
 
+
+
 ## **Installing Dependencies**
 
 ```bash
@@ -18,7 +20,17 @@ To run Back-end in developement run:
  yarn start:dev
 ```
 
-Runs the appliation on developement mode on port `http://localhost:8081`. **NOTE** The app is configured to connect to a live mongodb atlas, no need to run local monogodb.
+Runs the appliation on developement mode on port `http://localhost:8081`. Add the following to your `.env` file `FETCH_EXCHANGE_RATE_INTERVAL = 10`.
+ **NOTE** The app is configured to connect to a live mongodb atlas, you can easily set app up by creating mongodb atlas acount, create a cluster and database and then pass the following information to your `.env` file
+```bash
+DB_PASSWORD     = data-base-password
+CLUSTER         =  your cluster name
+DB_USER         =  database user
+DB_NAME         =  database name
+```
+
+
+ To use a local mongodb database instance edit the `production`, `developement` and `test` configuration in the `config/` directory and pass database connection string to the `DB_CONNECTION_STRING` property.
 
 ## **Runing API on production mode**
 
